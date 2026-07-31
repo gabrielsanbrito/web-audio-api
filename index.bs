@@ -2673,22 +2673,28 @@ Methods</h4>
                 steps.
 
                 <li> If {{[[committed frames]]}} is greater than or equal to
-                {{OfflineAudioContext}}'s {{OfflineAudioContext/length}}, reject <var>promise</var> with
-                {{InvalidStateError}} and abort these steps.
+                {{OfflineAudioContext}}'s {{OfflineAudioContext/length}}, reject
+		<var>promise</var> with {{InvalidStateError}} and abort these
+		steps.
 
                 <lI>Let <var>bufferLength</var> be a number initialized to the
-                value of the {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}.
+                value of the
+		{{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}.
 
                 <ol>
-                    <li> If the {{OfflineAudioContext}}'s {{OfflineAudioContext/length}} is <code>null</code>:
+                    <li> If the {{OfflineAudioContext}}'s
+		    {{OfflineAudioContext/length}} is <code>null</code>:
                     <ol> 
-                        <li> If {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
+                        <li> If
+			{{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
                         is <code>null</code>, set <var>bufferLength</var> to
                         <a>render quantum size</a>.
                     </ol>
-                    <li> Otherwise, if the {{OfflineAudioContext}}'s {{OfflineAudioContext/length}} is not <code>null</code>:
+                    <li> Otherwise, if the {{OfflineAudioContext}}'s
+		    {{OfflineAudioContext/length}} is not <code>null</code>:
                     <ol>
-                        <li> If {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
+                        <li> If
+			{{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
                         is not <code>null</code> and {{[[committed frames]]}} +
                         {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
                         is less than the {{OfflineAudioContext}}'s
@@ -2700,7 +2706,10 @@ Methods</h4>
                 </ol>
 
                 <lI>Let <var>bufferLength</var> be a number initialized to the
-                result of <a lt="calculate the buffer length for offline rendering">calculating the buffer length for offline rendering</a> given the requested <var>chunkSize</var>.
+                result of
+		<a lt="calculate the buffer length for offline rendering">
+		calculating the buffer length for offline rendering</a> given
+		the requested <var>chunkSize</var>.
 
                 <li> If <var>bufferLength</var> is not a multiple of
                 <a>render quantum size</a>, round it up to the next multiple of
@@ -2733,18 +2742,24 @@ Methods</h4>
         </div>
 
         <div algorithm="calculate buffer length for offline rendering">
-            To <dfn dfn for>calculate the buffer length for offline rendering</dfn> given a requested <var>chunkSize</var>, the following steps MUST be performed on the <a>control thread</a>:
+            To <dfn dfn for>calculate the buffer length for offline rendering
+	    </dfn> given a requested <var>chunkSize</var>, the following steps
+	    MUST be performed on the <a>control thread</a>:
             <ol>
-                <li> If the {{OfflineAudioContext}}'s {{OfflineAudioContext/length}} is <code>null</code>:
+                <li> If the {{OfflineAudioContext}}'s
+		{{OfflineAudioContext/length}} is <code>null</code>:
                 <ol> 
-                    <li> If {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
-                    is <code>null</code>, return <a>render quantum size</a>.
+                    <li> If
+		    {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
+                    is <code>null</code>, return the <a>render quantum size</a>.
                     <li> Otherwise, return
                     {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}.
                 </ol>
-                <li> Otherwise, if the {{OfflineAudioContext}}'s {{OfflineAudioContext/length}} is not <code>null</code>:
+                <li> Otherwise, if the {{OfflineAudioContext}}'s 
+		{{OfflineAudioContext/length}} is not <code>null</code>:
                 <ol>
-                    <li> If {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
+                    <li> If
+		    {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
                     is not <code>null</code> and {{[[committed frames]]}} +
                     {{OfflineAudioContext/startRendering(chunkSize)/chunkSize}}
                     is less than the {{OfflineAudioContext}}'s
@@ -2757,9 +2772,9 @@ Methods</h4>
         </div>
 
         <div algorithm="begin offline rendering">
-            To <dfn dfn for>begin offline rendering</dfn> for an {{AudioBuffer}} <var>buffer</var>, the following steps MUST
-            happen on a <a>rendering thread</a> that is created for the
-            occasion.
+            To <dfn dfn for>begin offline rendering</dfn> for an {{AudioBuffer}}
+	    <var>buffer</var>, the following steps MUST happen on a <a>rendering
+	    thread</a> that is created for the occasion.
 
             <ol>
                 
