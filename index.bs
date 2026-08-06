@@ -2673,7 +2673,9 @@ Methods</h4>
                 <var>promise</var> with {{InvalidStateError}} and abort these
                 steps.
 
-                <li> If {{[[committed frames]]}} is greater than or equal to
+                <li> If the {{OfflineAudioContext}}'s
+                {{OfflineAudioContext/length}} is not <code>null</code> and
+                {{[[committed frames]]}} is greater than or equal to
                 {{OfflineAudioContext}}'s {{OfflineAudioContext/length}}, reject
                 <var>promise</var> with {{InvalidStateError}} and abort these
                 steps.
@@ -2802,17 +2804,22 @@ Methods</h4>
                         {{[[rendered frames]]}} and the {{AudioBuffer/length}}
                         of <var>buffer</var>.
 
-                        <li> if {{[[rendered frames]]}} is greater than or equal
-                        to {{OfflineAudioContext/length}},
-                        <a>Queue a control message</a> to close the
-                        {{OfflineAudioContext}}.
+                        <li> If {{OfflineAudioContext/length}} is not <code>null</code>:
 
-                        <li>If {{OfflineAudioContext/length}} is not
-                        <code>null</code>, [=Queue a media element task=] to
-                        [=fire an event=] named {{OfflineAudioContext/complete}}
-                        at the {{OfflineAudioContext}} using
-                        {{OfflineAudioCompletionEvent}} whose `renderedBuffer`
-                        property is set to <var>buffer</var>.
+                        <ol>
+                            <li> If {{[[rendered frames]]}} is greater than or
+                            equal to {{OfflineAudioContext/length}},
+                            <a>Queue a control message</a> to close the
+                            {{OfflineAudioContext}}.
+
+                            <li> [=Queue a media element task=] to
+                            [=fire an event=] named
+                            {{OfflineAudioContext/complete}} at the
+                            {{OfflineAudioContext}} using
+                            {{OfflineAudioCompletionEvent}} whose
+                            `renderedBuffer` property is set to
+                            <var>buffer</var>.
+                        </ol>
 
                     </ol>
 
