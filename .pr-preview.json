@@ -2,6 +2,6 @@
     "src_file": "index.bs",
     "type": "bikeshed",
     "params": {
-        "die-on": "nothing"
+        "force": 1
     }
 }
